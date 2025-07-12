@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Gramatica.g4 by ANTLR 4.9.2
+// Generated from grammar/Gramatica.g4 by ANTLR 4.9.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -41,6 +41,30 @@ public interface IGramaticaListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitStart([NotNull] GramaticaParser.StartContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>Atribuicao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Atribuicao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Expressao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterExpressao([NotNull] GramaticaParser.ExpressaoContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Expressao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitExpressao([NotNull] GramaticaParser.ExpressaoContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>Numero</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
 	/// </summary>
@@ -52,6 +76,18 @@ public interface IGramaticaListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitNumero([NotNull] GramaticaParser.NumeroContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Variavel</c>
+	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterVariavel([NotNull] GramaticaParser.VariavelContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Variavel</c>
+	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitVariavel([NotNull] GramaticaParser.VariavelContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>Parenteses</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.

@@ -1,7 +1,49 @@
 using Antlr4.Runtime.Misc;
 
+/// <summary>
+/// Visitor personalizado para calcular expressões matemáticas e gerenciar variáveis
+/// </summary>
 public class GramaticaCalculatorVisitor : GramaticaBaseVisitor<double>
 {
+    private readonly VariableManager _variableManager;
+
+    public GramaticaCalculatorVisitor(VariableManager variableManager)
+    {
+        _variableManager = variableManager ?? throw new ArgumentNullException(nameof(variableManager));
+    }
+
+    // Visita uma atribuição de variável
+    public override double VisitAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context)
+    {
+        var variableName = context.ID().GetText();
+        var value = Visit(context.expr());
+        
+        _variableManager.SetVariable(variableName, value);
+        
+        return value; // Retorna o valor atribuído
+    }
+
+    // Visita uma expressão (sem atribuição)
+    public override double VisitExpressao([NotNull] GramaticaParser.ExpressaoContext context)
+    {
+        return Visit(context.expr());
+    }
+
+    // Visita uma variável
+    public override double VisitVariavel([NotNull] GramaticaParser.VariavelContext context)
+    {
+        var variableName = context.ID().GetText();
+        
+        try
+        {
+            return _variableManager.GetVariable(variableName);
+        }
+        catch (KeyNotFoundException)
+        {
+            throw new KeyNotFoundException($"Variável '{variableName}' não foi definida.");
+        }
+    }
+
     public override double VisitMultiplicacao_Divisao([NotNull] GramaticaParser.Multiplicacao_DivisaoContext context)
     {
         var left = Visit(context.expr(0));
@@ -15,12 +57,12 @@ public class GramaticaCalculatorVisitor : GramaticaBaseVisitor<double>
         {
             if (right == 0)
             {
-                throw new DivideByZeroException("Divisão por zero não é permitida!");
+                throw new DivideByZeroException(ErrorMessages.DivisionByZero());
             }
             return left / right;
         }
         
-        return 0; // Fallback (não deveria acontecer)
+        throw new InvalidOperationException(ErrorMessages.InvalidOperation("multiplicação/divisão"));
     }
 
     public override double VisitSoma_Subtracao([NotNull] GramaticaParser.Soma_SubtracaoContext context)
@@ -37,12 +79,19 @@ public class GramaticaCalculatorVisitor : GramaticaBaseVisitor<double>
             return left - right;
         }
         
-        return 0; // Fallback (não deveria acontecer)
+        throw new InvalidOperationException(ErrorMessages.InvalidOperation("soma/subtração"));
     }
 
     public override double VisitNumero([NotNull] GramaticaParser.NumeroContext context)
     {
-        return double.Parse(context.NUMBER().GetText());
+        var numberText = context.NUMBER().GetText();
+        
+        if (double.TryParse(numberText, out double result))
+        {
+            return result;
+        }
+        
+        throw new FormatException(ErrorMessages.InvalidNumber(numberText));
     }
 
     public override double VisitParenteses([NotNull] GramaticaParser.ParentesesContext context)

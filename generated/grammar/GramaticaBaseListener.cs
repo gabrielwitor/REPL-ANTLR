@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Gramatica.g4 by ANTLR 4.9.2
+// Generated from grammar/Gramatica.g4 by ANTLR 4.9.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -48,6 +48,34 @@ public partial class GramaticaBaseListener : IGramaticaListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitStart([NotNull] GramaticaParser.StartContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>Atribuicao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Atribuicao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Expressao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterExpressao([NotNull] GramaticaParser.ExpressaoContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Expressao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitExpressao([NotNull] GramaticaParser.ExpressaoContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>Numero</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -61,6 +89,20 @@ public partial class GramaticaBaseListener : IGramaticaListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitNumero([NotNull] GramaticaParser.NumeroContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>Variavel</c>
+	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterVariavel([NotNull] GramaticaParser.VariavelContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>Variavel</c>
+	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitVariavel([NotNull] GramaticaParser.VariavelContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>Parenteses</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.

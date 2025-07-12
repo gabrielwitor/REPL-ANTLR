@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from Gramatica.g4 by ANTLR 4.9.2
+// Generated from grammar/Gramatica.g4 by ANTLR 4.9.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -38,12 +38,33 @@ public interface IGramaticaVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitStart([NotNull] GramaticaParser.StartContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>Atribuicao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtribuicao([NotNull] GramaticaParser.AtribuicaoContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Expressao</c>
+	/// labeled alternative in <see cref="GramaticaParser.statement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitExpressao([NotNull] GramaticaParser.ExpressaoContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>Numero</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitNumero([NotNull] GramaticaParser.NumeroContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>Variavel</c>
+	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitVariavel([NotNull] GramaticaParser.VariavelContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>Parenteses</c>
 	/// labeled alternative in <see cref="GramaticaParser.expr"/>.
