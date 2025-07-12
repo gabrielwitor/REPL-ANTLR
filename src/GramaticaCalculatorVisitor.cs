@@ -18,9 +18,14 @@ public class GramaticaCalculatorVisitor : GramaticaBaseVisitor<double>
         var variableName = context.ID().GetText();
         var value = Visit(context.expr());
         
-        _variableManager.SetVariable(variableName, value);
+        var result = _variableManager.SetVariable(variableName, value);
         
-        return value; // Retorna o valor atribuído
+        if (!result.Success)
+        {
+            throw new ArgumentException(result.ErrorMessage);
+        }
+        
+        return result.Value; // Retorna o valor atribuído
     }
 
     // Visita uma expressão (sem atribuição)
@@ -34,14 +39,8 @@ public class GramaticaCalculatorVisitor : GramaticaBaseVisitor<double>
     {
         var variableName = context.ID().GetText();
         
-        try
-        {
-            return _variableManager.GetVariable(variableName);
-        }
-        catch (KeyNotFoundException)
-        {
-            throw new KeyNotFoundException($"Variável '{variableName}' não foi definida.");
-        }
+        // O método GetVariable já lança exceções adequadas com mensagens de erro
+        return _variableManager.GetVariable(variableName);
     }
 
     public override double VisitMultiplicacao_Divisao([NotNull] GramaticaParser.Multiplicacao_DivisaoContext context)

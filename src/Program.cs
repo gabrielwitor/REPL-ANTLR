@@ -51,6 +51,10 @@ public class Program
                 var result = EvaluateExpression(input);
                 Console.WriteLine($"= {result}");
             }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (DivideByZeroException ex)
             {
                 Console.WriteLine(ex.Message);
